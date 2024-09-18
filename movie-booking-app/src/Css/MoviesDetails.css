@@ -1,0 +1,572 @@
+body {
+  background-color: #313131; /* Black background color */
+  color: #fff; /* Optional: Change text color to white for better contrast */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Optional: Adjust font if needed */
+}
+
+.movie-info {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: white;
+  padding: 20px;
+}
+
+.movie-info img {
+  width: 150px;
+  border-radius: 5px;
+  margin-right: 20px;
+  z-index: 2;
+  background-color: #181818;
+  padding: 0px;
+  box-shadow: 1px 2px 8px rgba(8, 8, 8, 0.5);
+}
+
+.movie-text {
+  flex: 2;
+  margin-right: 20px;
+  align-self: flex-end;
+  z-index: 2;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.background-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 272%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dates-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #36454f;
+  margin-top: -10px;
+}
+
+.date-button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.date-button.selected {
+  background-color: #00a2d3;
+  color: white;
+}
+
+.date-button:hover {
+  background-color: #00b39b;
+}
+
+.theatre-container {
+  /* background-color: rgb(223, 223, 223); */
+
+  border-radius: 4px;
+  border: 2px solid #36454f;
+}
+
+.theatre-shows {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  border: 1px; /* Dark grey border */
+  background-color: #313131; /* White background */
+  border-radius: 5px;
+  position: relative;
+  width: 100%; /* Ensure it takes the full width available */
+}
+
+.theatre-info {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.theatre-info h3 {
+  font-size: medium;
+  font-weight: 500;
+  color: #e2e2e2;
+  margin-left: 30px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.show-times {
+  display: flex;
+  flex-wrap: wrap; /* Wrap show times if they overflow */
+  background-color: #242424;
+  padding: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+.show-time {
+  padding: 10px;
+  border: 1px solid rgb(179, 178, 178);
+  background-color: #7f7f7f; /* Green background */
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+}
+
+.show-time:hover {
+  background-color: #e9ecef; /* Light grey on hover */
+  border-color: #23272b; /* Slightly darker grey on hover */
+  color: #000;
+}
+
+.background-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 15%,
+    rgba(0, 0, 0, 0.3) 30%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.theatre-location {
+  font-style: italic;
+  color: #e98400; /* Grey color for the location */
+  font-size: 11px;
+  margin-right: 20px;
+}
+
+.theatre-location .fa-map-marker-alt {
+  margin-right: 5px;
+}
+
+.theatre-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.theatre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.theatre-name {
+  font-weight: bold;
+  color: #004d00; /* Dark green color */
+}
+
+.theatre-info {
+  display: flex;
+  justify-content: space-between; /* Space between theatre name and location */
+  align-items: center; /* Vertically align items */
+  /* Space below the info section */
+  background-color: #202020;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+}
+
+.seat-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(34, 34, 34, 0.808); /* Glassy effect */
+  backdrop-filter: blur(5px); /* Glassy effect */
+  padding-top: 50px;
+  padding-bottom: 50px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.seat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+.row-label {
+  padding-right: 0px;
+  margin-top: 5px;
+  color: #949494;
+  font-size: 13px;
+  display: flex;
+  align-items: center; /* Vertically center text */
+  justify-content: center; /* Horizontally center text */
+  min-width: 30px; /* Ensure a minimum width */
+  height: 30px; /* Ensure a consistent height */
+}
+
+.seat-button.booked {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.seat-button.available:hover {
+  background-color: #bde4ff;
+}
+
+.seat-button.selected {
+  background-color: #4b4b4b;
+  color: #ffffff;
+}
+
+.selected-seats-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.seat-icon {
+  font-size: 10px; /* Increase icon size */
+  color: #838383;
+}
+
+.seat-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: none;
+  padding: 20px;
+  min-width: 90px;
+  border-radius: 10px;
+  border: 2px solid #00b39b; /* Border color */
+  background-color: #f5f5f5; /* Light grey background to contrast with border */
+}
+
+.seat-number {
+  font-size: 10px; /* Increase seat number size */
+  margin-top: 1px; /* Increase space between the icon and seat number */
+  color: #009619; /* Set color to black for contrast */
+}
+
+.seat-number.selected {
+  font-size: 10px; /* Decrease seat number size */
+  margin-top: 4px;
+  color: rgb(255, 255, 255);
+}
+
+.seat-spacer {
+  height: 0; /* No actual height */
+  width: 30px;
+}
+
+.seats {
+  display: flex;
+  flex-wrap: wrap; /* Ensures wrapping within the container */
+  justify-content: center; /* Centers the seats within their row */
+}
+
+.seat-spacer-rowLabel {
+  height: 0; /* No actual height */
+  width: 5px;
+}
+
+.seat-map-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.show-time-info {
+  font-size: 12px;
+  font-weight: 500;
+  color: #979797;
+  margin: 10px;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Add ellipsis if content overflows */
+}
+
+.movie-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #979797;
+}
+
+.color-code-legend {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.color-box.selected {
+  background-color: rgb(84, 255, 84);
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+}
+
+.color-box.booked {
+  background-color: #ccc;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+}
+
+.color-box.available {
+  background-color: #ffffff;
+  border: 1px solid #000;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+}
+
+.color-code-legend span {
+  margin-right: 15px;
+  line-height: 20px;
+}
+
+.color-box-label-text {
+  color: #7a7a7a;
+  font-weight: 600;
+}
+
+.movie-name,
+.theatre-name,
+.show-time-in-ticket-info {
+  margin-right: 20px; /* Space between items */
+  color: #7a7a7a;
+  font-weight: 600;
+  padding-top: 10px;
+}
+
+.show-date-in-ticket-screen {
+  margin: 5px;
+}
+
+/* Optional: Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .show-time-details {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: flex-start;
+  }
+}
+
+.theatre-screen-icon {
+  position: relative;
+  background: #414141;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #333;
+  width: 95%;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50% 50% 0% 0%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional shadow for more depth */
+}
+
+.theatre-screen-icon h2 {
+  margin: 0;
+  font-size: 20px; /* Adjust the font size as needed */
+  color: #d3d3d3;
+}
+
+.theatre-screen-icon p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.screen-details {
+  font-style: italic;
+  color: #ccc;
+}
+
+.parent-container {
+  padding-top: 20px; /* Space above theatre screen */
+}
+
+/* Styles for the modal */
+.seat-selection-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it appears above everything else */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Modal content */
+.seat-selection-content {
+  position: relative; /* Make sure the button container is positioned relative to this */
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px;
+  width: 90vw;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.container.seat-selector {
+  max-height: 88vh; /* Adjust to fit within the modal */
+  max-width: 100%;
+  overflow-y: auto; /* Scroll if the content is too large */
+}
+
+/* Blur background when modal is open */
+.page-content-blur {
+  filter: blur(5px);
+  transition: filter 0.5s ease-in-out;
+}
+
+/* Show the modal */
+.show-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.show-modal .seat-selection-content {
+  transform: translateY(0);
+}
+
+.book-tickets-container {
+  position: absolute; /* Position absolutely relative to the .seat-selection-content */
+  bottom: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}
+
+.book-tickets-btn {
+  padding: 10px 10px;
+  font-size: 14px;
+
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-tickets-btn.booked {
+  background-color: red; /* Red background */
+  color: white; /* White text */
+}
+
+.book-tickets-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px; /* Adjust the width as needed */
+  min-height: 50px; /* Adjust the height as needed */
+  font-family: calibri, sans-serif;
+
+  border-radius: 30px; /* Rounded corners */
+  cursor: pointer;
+  font-weight: 400;
+  text-decoration: none;
+
+  backdrop-filter: blur(10px); /* Glassy effect */
+  color: rgb(255, 255, 255);
+  transition: all 0.5s linear;
+  position: relative; /* For positioning the icon */
+}
+
+.book-tickets-btn span {
+  font-size: 14px; /* Smaller font size */
+  font-weight: 700;
+  padding: 0 10px;
+}
+
+.book-tickets-btn ion-icon {
+  font-size: 1.2em; /* Adjust the icon size */
+  transition: all 0.5s linear;
+}
+
+.book-tickets-btn::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 100%;
+
+  position: absolute;
+  border-radius: 100px;
+  left: 0.1em;
+  z-index: -1;
+  transition: all 600ms ease;
+}
+
+.book-tickets-btn:hover {
+  color: #fff;
+}
+
+.book-tickets-btn:hover ion-icon {
+  transform: rotate(-90deg);
+}
+
+.book-tickets-btn:hover::before {
+  background-color: rgba(255, 0, 0, 0.89); /* Darker red overlay on hover */
+  width: 100%;
+}
+
+.book-tickets-btn:hover ion-icon {
+  transform: translateX(10px);
+}
+
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  max-width: 100%;
+}

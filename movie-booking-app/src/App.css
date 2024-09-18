@@ -1,0 +1,258 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  max-width: 400px; /* Adjusted for phone size */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-content {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider-item {
+  min-width: 100%;
+  box-sizing: border-box;
+  transition: opacity 0.5s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2; /* Ensure main movie is above adjacent movies */
+}
+
+.slider-item.active {
+  opacity: 1;
+}
+
+.slider-item:not(.active) {
+  opacity: 0;
+}
+
+.slider-image-container {
+  width: 100%;
+  max-height: 80vh; /* Limit the height to fit within the viewport */
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-image {
+  width: 100%;
+  height: auto; /* Maintain the aspect ratio */
+  max-height: 80vh; /* Limit the height to fit within the viewport */
+  object-fit: contain;
+}
+
+.slider-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  padding: 15px;
+  border-radius: 0 0 5px 5px;
+  width: calc(100% - 30px); /* Ensure it fits within the image */
+  box-sizing: border-box;
+  z-index: 3; /* Ensure info box is above adjacent movies */
+}
+
+.slider-title {
+  margin: 0;
+  font-size: 1.2em; /* Adjusted for better fit */
+}
+
+.slider-text {
+  margin: 5px 0; /* Adjusted for better fit */
+  font-size: 0.9em; /* Adjusted for better fit */
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  z-index: 4; /* Ensure buttons are clickable */
+}
+
+.slider-button.left {
+  left: 10px;
+}
+
+.slider-button.right {
+  right: 10px;
+}
+
+.slider-item-adjacent {
+  position: absolute;
+  top: 0;
+  width: 33%; /* Adjust to fit within the slider container */
+  height: 100%;
+  opacity: 0.9; /* Adjust for faded effect */
+  background: rgba(0, 0, 0, 1); /* Black overlay with 70% opacity */
+  z-index: 1; /* Ensure adjacent movies are below the main movie */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* animation: moveAndFade 0.5s forwards; */
+}
+
+.slider-item-adjacent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black; /* Foreground black color */
+  background: 
+    /* Top edge gradient */
+    linear-gradient(to bottom, rgba(0, 0, 0, 1) 1px, rgba(0, 0, 0, 0) 10%),
+    /* Bottom edge gradient */
+      linear-gradient(to top, rgba(0, 0, 0, 1) 1px, rgba(0, 0, 0, 0) 10%),
+    /* Left edge gradient */
+      linear-gradient(to right, rgba(0, 0, 0, 1) 1px, rgba(0, 0, 0, 0) 10%),
+    /* Right edge gradient */
+      linear-gradient(to left, rgba(0, 0, 0, 1) 1px, rgba(0, 0, 0, 0) 10%),
+    /* Top-left corner gradient */
+      radial-gradient(
+        circle at top left,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0) 50%
+      ),
+    /* Top-right corner gradient */
+      radial-gradient(
+        circle at top right,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0) 50%
+      ),
+    /* Bottom-left corner gradient */
+      radial-gradient(
+        circle at bottom left,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0) 50%
+      ),
+    /* Bottom-right corner gradient */
+      radial-gradient(
+        circle at bottom right,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0) 50%
+      );
+  opacity: 0.5; /* Adjust the opacity as needed */
+  z-index: 1; /* Ensure it appears above the image */
+}
+
+.slider-item-adjacent img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: brightness(60%) contrast(110%) grayscale(50%); /* Adjust brightness, increase contrast, and apply grayscale */
+  opacity: 1; /* Set opacity to full */
+  opacity: 1; /* Set opacity to full */
+  position: relative;
+  z-index: 0; /* Ensure it appears below the overlay */
+  mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.8) 10%,
+    rgba(0, 0, 0, 0.8)
+  ); /* Add gradient effect on edges */
+  -webkit-mask-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 0) 88%
+  ); /* For WebKit browsers */
+}
+
+.slider-item-adjacent.left {
+  left: 0;
+  z-index: -1;
+}
+
+.slider-item-adjacent.right {
+  right: 0;
+  z-index: -1;
+}
+
+.fade-in {
+  /* animation: fadeIn 2s ease-in-out; */
+  transition: opacity 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveAndFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

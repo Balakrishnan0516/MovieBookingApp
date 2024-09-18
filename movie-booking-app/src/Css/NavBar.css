@@ -1,0 +1,72 @@
+.navbar {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  margin-right: auto; /* Push nav links to the left */
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 15px; /* Spacing between nav links */
+}
+
+.navbar-nav .nav-link:last-child {
+  margin-right: 0; /* Remove margin from the last nav link */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff;
+  background-color: rgba(
+    0,
+    123,
+    255,
+    0.15
+  ); /* Subtle light blue background on hover */
+  border-radius: 5px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push the search container to the right */
+}
+
+.search-input {
+  width: 200px;
+  margin-right: 10px; /* Space between search input and button */
+}
+
+.search-button {
+  border: 1px solid #5bc0de; /* Light blue border color */
+  color: #5bc0de; /* Light blue text color */
+  background-color: transparent; /* Transparent background */
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #242424; /* Light blue background color on hover */
+  color: #fff; /* White text color on hover */
+  border-color: #5bc0de; /* Light blue border color on hover */
+}
+
+.nav-link-button {
+  color: #5bc0de; /* Light blue text color */
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+  margin-left: 10px; /* Space between login and sign-up buttons */
+}
+
+.nav-link-button:hover {
+  color: #fff; /* White text color on hover */
+  background-color: #5bc0de; /* Light blue background color on hover */
+  border-radius: 5px; /* Rounded corners for a modern look */
+}

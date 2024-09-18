@@ -1,0 +1,19 @@
+.loading-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-spinner p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #000;
+}

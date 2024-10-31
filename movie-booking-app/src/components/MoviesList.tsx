@@ -4,6 +4,7 @@ import axios from "axios";
 import { Typography, Button } from "@mui/joy";
 import { IconButton } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"; // Import the play icon
+import LoadingComponent from "./LoadingComponent";
 
 interface Movie {
   id: number;
@@ -16,11 +17,14 @@ interface Movie {
 
 const MoviesList: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(3);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/auth/movies")
+      .get(
+        "http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/movies"
+      )
       .then((response) => {
         setMovies(response.data._embedded.movies);
       })
@@ -39,7 +43,9 @@ const MoviesList: React.FC = () => {
     );
   };
 
-  if (movies.length === 0) return <p>Loading...</p>;
+  if (movies.length === 0) {
+    return <LoadingComponent loading={loading} />; // Use the loading component
+  }
 
   const previousIndex = (currentIndex - 1 + movies.length) % movies.length;
   const nextIndex = (currentIndex + 1) % movies.length;
@@ -47,28 +53,21 @@ const MoviesList: React.FC = () => {
   return (
     <div className="container">
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Typography
-          level="h1"
-          sx={{
-            color: "#c0c0c0", // Whitish-black color tone
-            fontWeight: "normal", // Less bold
-            fontSize: "1.7rem", // Slightly smaller size
-            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.4)", // Softer shadow
-            marginBottom: "15px",
-            fontFamily: "Courier New",
-          }}
-        >
-          Movies
-        </Typography>
+        <Button
+          color="primary"
+          style={{
+            background: "linear-gradient(50deg, #404046, #202020)", // Dark gradient // Gradient color
+            color: "white",
+            fontWeight: "bold",
+            padding: "10px 20px",
 
-        <IconButton
-          sx={{
-            alignItems: "center", // Center icon within button
-            marginBottom: "15px",
+            fontSize: "16px",
+            margin: "auto",
+            marginBottom: "8px",
           }}
         >
-          <PlayArrowIcon sx={{ color: "#D22B2B" }} /> {/* White icon color */}
-        </IconButton>
+          Grab your tickets now!
+        </Button>
       </div>
       <div className="slider-container">
         <button className="slider-button left" onClick={handlePrevious}>

@@ -31,7 +31,9 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(133, 133, 133, 0.1);
+  background: rgba(97, 97, 97, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 .success-checkmark {

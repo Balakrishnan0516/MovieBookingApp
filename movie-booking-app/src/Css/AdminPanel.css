@@ -1,0 +1,46 @@
+.admin-panel {
+  display: flex;
+  flex-direction: column; /* Stack the top panel and content vertically */
+  height: 100vh; /* Full height */
+  border-radius: 10px;
+}
+
+.top-panel {
+  display: flex;
+  justify-content: center; /* Distribute buttons evenly */
+  padding: 20px;
+  background: rgba(33, 33, 33, 0.8); /* Slightly transparent dark */
+  backdrop-filter: blur(10px); /* Glassy effect */
+}
+
+.content-panel {
+  flex: 1; /* Take up remaining height */
+  padding: 20px;
+  background: rgba(33, 33, 33, 0.8); /* Slightly transparent dark */
+  backdrop-filter: blur(10px); /* Glassy effect */
+}
+
+.nav-button {
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent white */
+  color: #c4c4c4; /* White text */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  margin: 10px;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Lighter on hover */
+  color: #ffffff; /* Change text color on hover */
+}
+
+.access-denied {
+  color: rgb(0, 83, 190);
+  text-align: center;
+  font-size: 20px;
+  margin-top: 50px;
+}

@@ -1,9 +1,16 @@
+.nav-contain {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .navbar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand img {
   margin-right: 10px;
+  margin: auto;
+  margin-left: 15px;
+  padding: 1px;
 }
 
 .navbar-nav {
@@ -11,9 +18,9 @@
 }
 
 .navbar-nav .nav-link {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  margin-right: 15px; /* Spacing between nav links */
+  /* Spacing between nav links */
 }
 
 .navbar-nav .nav-link:last-child {
@@ -21,14 +28,18 @@
 }
 
 .navbar-nav .nav-link:hover {
-  color: #fff;
-  background-color: rgba(
-    0,
-    123,
-    255,
-    0.15
-  ); /* Subtle light blue background on hover */
-  border-radius: 5px;
+  color: #ffffff;
+  background: linear-gradient(
+    90deg,
+    rgba(36, 36, 36, 0.9),
+    rgba(50, 50, 50, 0.9)
+  );
+
+  border-right: 3px solid #ff2525; /* Your original red border */
+  backdrop-filter: blur(10px); /* Adds the glassy blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border-radius: 20px; /* Optional: Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Gives a soft shadow */
 }
 
 .search-container {
@@ -42,21 +53,6 @@
   margin-right: 10px; /* Space between search input and button */
 }
 
-.search-button {
-  border: 1px solid #5bc0de; /* Light blue border color */
-  color: #5bc0de; /* Light blue text color */
-  background-color: transparent; /* Transparent background */
-  transition:
-    background-color 0.3s,
-    color 0.3s;
-}
-
-.search-button:hover {
-  background-color: #242424; /* Light blue background color on hover */
-  color: #fff; /* White text color on hover */
-  border-color: #5bc0de; /* Light blue border color on hover */
-}
-
 .nav-link-button {
   color: #5bc0de; /* Light blue text color */
   transition:
@@ -68,5 +64,66 @@
 .nav-link-button:hover {
   color: #fff; /* White text color on hover */
   background-color: #5bc0de; /* Light blue background color on hover */
-  border-radius: 5px; /* Rounded corners for a modern look */
+  /* Rounded corners for a modern look */
+}
+
+.dark-theme {
+  background-color: #333; /* Dark background */
+  color: white; /* Light text color */
+  border: 1px solid #555; /* Dark border */
+}
+
+.dark-theme::placeholder {
+  color: #aaa; /* Placeholder color */
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-contain.container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .nav-contain.container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.nav-contain.container {
+  padding: 0;
+}
+
+/* NavDropdownStyles.css */
+.custom-dropdown {
+  /* Transparent white background */
+  color: white; /* Text color */
+
+  z-index: 3;
+}
+
+.custom-dropdown .dropdown-menu {
+  background: rgba(59, 59, 59, 0.5); /* Same glassy effect for dropdown menu */
+  border: none; /* Remove border */
+  backdrop-filter: blur(10px); /* Apply blur */
+  border-radius: 8px; /* Rounded corners */
+  margin: 5px;
+}
+
+.custom-dropdown .dropdown-item {
+  background: transparent; /* Make item background transparent */
+  color: white; /* Set text color for items */
+  border-radius: 4px; /* Slightly rounded corners for items */
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.2); /* Change color on hover */
+  color: white; /* Ensure text remains readable on hover */
+}
+
+.custom-dropdown .dropdown-divider {
+  background-color: rgba(255, 255, 255, 0.3); /* Set color for the divider */
 }

@@ -1,0 +1,239 @@
+/* HomePage.css */
+
+.homepage-container {
+  background: linear-gradient(
+    to bottom,
+    #181818,
+    #333333 45%,
+    #444444 50%,
+    #111111 75%,
+    #000000
+  ); /* Multiple color stops for a richer gradient */
+  color: #fff;
+  padding: 20px;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #000;
+  height: 600px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.hero-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 100%);
+  padding: 20px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-book-button {
+  background-color: #ff3d00;
+  border-color: #ff3d00;
+  color: white;
+}
+
+.movie-carousel {
+  margin-top: 40px;
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-movie-poster {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carousel-overlay {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.featured-movies-section {
+  margin-top: 40px;
+}
+
+.featured-movies-section h5 {
+  padding: 10px;
+  color: #b3b3b3;
+  width: 40%;
+}
+
+.divbar {
+  height: 0.1rem; /* Adjust height to match button size */
+  width: 100%; /* Thickness of the divider */
+  background-color: #ff3d00; /* Red color for the divider */
+  margin-bottom: 4px;
+}
+
+.theatres-section h5 {
+  padding: 10px;
+  color: #b3b3b3;
+  width: 34%;
+}
+
+.featured-movies-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items in a row */
+  gap: 20px;
+}
+
+.featured-movie-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(97, 97, 97, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.featured-movie-card:hover {
+  transform: translateY(-10px);
+}
+
+.featured-movie-poster {
+  width: 100%;
+  border-radius: 10px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.featured-movie-info h6 {
+  color: #fff;
+  margin-top: 10px;
+}
+
+.featured-movie-info button {
+  margin-top: 10px;
+}
+
+.theatres-section {
+  margin-top: 40px;
+}
+
+.theatre-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.theatre-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(97, 97, 97, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  text-align: center; /* Center text if needed */
+  border-radius: 10px;
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  justify-content: space-between; /* Space between elements */
+}
+
+.theatre-icon {
+  color: #ff3d00;
+  font-size: 20px;
+}
+
+.theatre-list p {
+  color: orange;
+}
+.Recommentalign {
+  /* Optional: Add some margin or padding if needed */
+  margin: 10px 0;
+}
+
+.recommended-content {
+  display: flex; /* Enable flexbox */
+  align-items: center; /* Center items vertically */
+}
+
+.custom-button {
+  background: linear-gradient(
+    135deg,
+    #ffae00,
+    #ffc31e
+  ); /* Gradient background */
+  color: white;
+  padding: 8px 20px; /* Reduced padding for a smaller button */
+  border: none; /* Remove default border */
+  border-radius: 20px; /* Slightly rounded corners */
+  font-size: 14px; /* Smaller font size */
+  font-weight: 500; /* Semi-bold text */
+  text-transform: uppercase; /* Uppercase text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition:
+    transform 0.2s,
+    box-shadow 0.3s; /* Transition effects */
+}
+
+.custom-button:hover {
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+}
+
+.custom-button:active {
+  transform: translateY(0); /* No depression on click */
+}
+
+.theatre-card-2 {
+  margin-left: 60px;
+}
+
+/* HomePage.css */
+
+/* Styles for larger screens (default behavior) */
+.homepage-container.container {
+  margin: 0 auto;
+  max-width: 1320px; /* or any value depending on your desired layout */
+}
+
+/* Styles for mobile screens */
+@media only screen and (max-width: 768px) {
+  .homepage-container.container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .theatre-list {
+    grid-template-columns: 1fr; /* One theatre per row */
+    gap: 15px; /* Increase gap for better spacing */
+  }
+
+  /* Adjust padding and alignment for the theatre cards on mobile */
+  .theatre-card,
+  .theatre-card-2 {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center align the items */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+
+  .theatre-card-2 {
+    margin-left: 0; /* Remove left margin for mobile */
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .featured-movies-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 items in a row for smaller screens */
+    gap: 10px; /* Further adjust gap */
+  }
+}

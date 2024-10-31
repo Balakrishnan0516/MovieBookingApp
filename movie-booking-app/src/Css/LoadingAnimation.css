@@ -3,7 +3,13 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(133, 133, 133, 0.1);
+  background: rgba(97, 97, 97, 0.5);
+  backdrop-filter: blur(10px);
+  color: aliceblue;
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
 }
 
 .loading-spinner {
@@ -13,7 +19,20 @@
 }
 
 .loading-spinner p {
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 18px;
-  color: #000;
+  color: #cacaca;
+  animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

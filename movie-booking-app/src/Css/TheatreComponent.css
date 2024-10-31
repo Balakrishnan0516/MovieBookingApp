@@ -1,0 +1,113 @@
+/* Theatre Component Styles */
+.theatre-container-2 {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #2b2c2e; /* Dark background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Darker shadow for depth */
+  transition: transform 0.3s; /* Smooth scaling on hover */
+}
+
+.theatre-container-2:hover {
+  transform: scale(1.02); /* Slightly enlarge the entire container on hover */
+}
+
+.theatre-title {
+  font-size: 20px; /* Larger font size for the theatre name */
+  font-weight: 700; /* Bold font weight */
+  margin-bottom: 5px;
+  color: #edf2f4; /* Light text color */
+  text-align: center; /* Center the title */
+}
+
+.theatre-location {
+  font-size: 12px; /* Slightly smaller font size for location */
+  color: #cbd5e1; /* Medium grey for the location text */
+  text-align: center; /* Center the location */
+  margin-bottom: 15px; /* Space below the location */
+}
+
+.movies-container-2 {
+  display: grid; /* Using CSS Grid to layout movies */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+}
+
+.movie-container-2 {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(97, 97, 97, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.movie-container-2:hover {
+  transform: translateY(-5px); /* Slightly lift the movie item on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+}
+
+.movie-image {
+  width: 200px; /* Set a fixed width */
+  height: 300px; /* Set a fixed height */
+  object-fit: cover; /* Ensures the image covers the container while cropping if necessary */
+  border-bottom: 4px solid #38b2ac; /* Accent border */
+  transition: transform 0.3s;
+}
+
+.movie-image:hover {
+  transform: scale(1.05); /* Slightly enlarge the image on hover */
+}
+
+.movie-title {
+  font-size: 12px; /* Font size for the movie title */
+  font-weight: 600; /* Bold font for the title */
+  margin: 10px 0; /* Margin above and below title */
+  color: #edf2f4; /* Light text color for the title */
+}
+
+.movie-details {
+  font-size: 14px; /* Smaller font size for details */
+  color: #e2e8f0; /* Lighter grey for details */
+  margin: 10px 0; /* Margin above and below details */
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .theatre-title {
+    font-size: 24px;
+  }
+
+  .theatre-location {
+    font-size: 16px;
+  }
+
+  .movie-title {
+    font-size: 16px;
+  }
+
+  .movie-details {
+    font-size: 12px;
+  }
+
+  .theatre-shows.container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.theatre-shows.container {
+  background: linear-gradient(
+    to bottom,
+    #181818,
+    #333333 45%,
+    #444444 50%,
+    #111111 75%,
+    #000000
+  );
+}

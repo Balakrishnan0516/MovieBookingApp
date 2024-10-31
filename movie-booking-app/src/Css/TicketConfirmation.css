@@ -1,0 +1,76 @@
+.ticket-confirmation-container {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(97, 97, 97, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-content {
+  display: flex; /* Flexbox layout to align items in a row */
+  gap: 20px; /* Space between the image and details */
+  align-items: flex-start; /* Align items at the top */
+}
+
+.ticket-details-box {
+  border: 1px solid #949494;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.ticket-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #bbbbbbd8;
+  text-align: center;
+  width: 100%;
+}
+
+.ticket-info {
+  padding: 5px;
+  color: #c2c2c2;
+}
+
+.ticket-info p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.movie-image-container img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-container {
+  margin-top: 20px;
+}
+
+.download-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-button:hover {
+  background-color: #45a049;
+}
+
+.ticket-image {
+  flex-shrink: 0; /* Prevents image from shrinking */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.divider-bar-v2 {
+  height: 21rem; /* Adjust height to match button size */
+  width: 2px; /* Thickness of the divider */
+  background-color: #ff5722; /* Red color for the divider */
+}

@@ -21,6 +21,7 @@ import DateSelector from "./DateSelector";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+import LoadingComponent from "./LoadingComponent";
 
 interface Show {
   id: number;
@@ -81,6 +82,8 @@ const MovieDetails: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBooked, setIsBooked] = useState(false);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  let videoId = ""; // Global variable
+  const [isApiReady, setIsApiReady] = useState(false);
 
   const navigate = useNavigate();
 
@@ -131,7 +134,7 @@ const MovieDetails: React.FC = () => {
     const fetchMovieDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/auth/theatre-shows-by-movie/${id}`
+          `http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/theatre-shows-by-movie/${id}`
         );
         setShows(response.data);
         setLoading(false);
@@ -144,7 +147,7 @@ const MovieDetails: React.FC = () => {
     const fetchMovieInfo = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/auth/movies/${id}`
+          `http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/movies/${id}`
         );
         setMovie(response.data);
         console.log("Movie details - ", response.data);
@@ -167,16 +170,21 @@ const MovieDetails: React.FC = () => {
     const initializePlayer = () => {
       console.log("Initializing player...");
 
-      if (window.YT && window.YT.Player && movie?.youtubeUrl) {
+      if (movie?.youtubeUrl) {
+        videoId = extractVideoIdFromUrl(movie?.youtubeUrl);
+        console.log("Video id: ", videoId);
+      }
+
+      if (window.YT && window.YT.Player) {
         console.log("Initializing player level 1...");
 
         if (playerRef.current) {
           console.log("In destroy field..", playerRef.current);
+
           playerRef.current.destroy();
+
           console.log("Initializing - Destroy...");
         }
-
-        const videoId = extractVideoIdFromUrl(movie.youtubeUrl);
 
         playerRef.current = new window.YT.Player("youtube-player", {
           videoId: videoId, // Correct YouTube video ID
@@ -201,7 +209,10 @@ const MovieDetails: React.FC = () => {
         console.error("YT.Player is not available");
       }
 
-      console.log("Youtube.current initialized...", playerRef.current);
+      console.log(
+        "Youtube.current initialized - playref ...",
+        playerRef.current
+      );
     };
 
     const loadYouTubeAPI = () => {
@@ -232,8 +243,9 @@ const MovieDetails: React.FC = () => {
     };
 
     loadYouTubeAPI();
+    //initializePlayer();
 
-    const handleScroll = () => {
+    /* const handleScroll = () => {
       const iframe = document.getElementById("youtube-player");
       const iframeBounds = iframe?.getBoundingClientRect();
       const isVisible =
@@ -259,9 +271,9 @@ const MovieDetails: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
       if (playerRef.current) {
         playerRef.current.destroy();
-      }
-    };
-  }, [id, movie]); // Re-run when `id` changes
+      } 
+    }; */
+  }, [id, movie, videoId, movie?.youtubeUrl]); // Re-run when `id` changes
 
   const handlePlayPause = () => {
     if (playerRef.current && playerRef.current.getPlayerState) {
@@ -290,10 +302,13 @@ const MovieDetails: React.FC = () => {
       console.log("Booked seat numbers - Show ID...", showTime);
       try {
         const response = await axios.get<BookedSeatResponse[]>(
-          `http://localhost:8080/api/auth/booked-seats-status/${showTime}`
+          `http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/booked-seats-status/${showTime}`
         );
         // Assuming the response is an array and you need to handle each item
-        const seatNumbers = response.data.flatMap((item) => item.seatNumbers);
+        const seatNumbers = response.data.flatMap((item) =>
+          item.status === "Confirmed" ? item.seatNumbers : []
+        );
+
         setBookedSeats(seatNumbers);
         console.log("Booked seat numbers...", seatNumbers);
       } catch (error) {
@@ -325,7 +340,7 @@ const MovieDetails: React.FC = () => {
     }
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/auth/show-seats/${showId}`
+        `http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/show-seats/${showId}`
       );
       setSeats(response.data);
 
@@ -353,10 +368,9 @@ const MovieDetails: React.FC = () => {
     )
   );
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  if (!movie) return <p>Loading...</p>;
+  if (!movie) return <LoadingComponent loading={loading} />;
 
   // Define a function to split seats into two columns
   const getSeatColumns = (allSeats: Seat[]) => {
@@ -455,8 +469,12 @@ const MovieDetails: React.FC = () => {
     })
     .filter(Boolean);
 
+  if (loading) {
+    return <LoadingComponent loading={loading} />; // Use the loading component
+  }
+
   return (
-    <div className="container">
+    <div className="movie-detail-con container">
       <div className="movie-info">
         <img src={`data:image/png;base64,${movie.image}`} alt={movie.title} />
         <div className="movie-text">

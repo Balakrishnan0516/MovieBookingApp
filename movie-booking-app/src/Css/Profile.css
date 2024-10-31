@@ -1,0 +1,59 @@
+.booking-card {
+  border: 1px solid #2c2c2c;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(133, 133, 133, 0.1);
+  background: rgba(97, 97, 97, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  color: rgb(236, 236, 236);
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-seats {
+  margin-top: 10px;
+}
+
+.cancel-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button[disabled] {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.cancelled-booking {
+  opacity: 0.6; /* Grey out cancelled bookings */
+}
+
+.divider-bar-v3 {
+  height: 1.8rem; /* Adjust height to match button size */
+  width: 5px; /* Thickness of the divider */
+  background-color: #ff5722; /* Red color for the divider */
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  padding-bottom: 10px;
+}
+
+.header-container h2 {
+  margin-right: 10px; /* Add some spacing between the text and divider */
+  color: rgb(231, 231, 231);
+  font-size: x-large;
+  font-weight: 5bold;
+}

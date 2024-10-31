@@ -99,7 +99,7 @@ const PaymentComponent: React.FC<PaymentComponentProps> = ({ userId }) => {
       try {
         setLoading(true);
         const response = await axios.post(
-          "http://localhost:8080/api/auth/seats-totalRate",
+          `http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/seats-totalRate/${show.id}`,
           selectedSeatNumbers
         );
         setTotalAmount(response.data);
@@ -160,7 +160,7 @@ const PaymentComponent: React.FC<PaymentComponentProps> = ({ userId }) => {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/auth/complete-payment",
+        "http://a96784accbed04d04a49101640f100a7-2048952236.ap-southeast-2.elb.amazonaws.com:8080/api/auth/complete-payment",
         {
           method: "POST",
           headers: {
@@ -175,7 +175,14 @@ const PaymentComponent: React.FC<PaymentComponentProps> = ({ userId }) => {
         console.log(result);
         setPaymentSuccess(true);
         setTimeout(() => {
-          navigate("/confirmation"); // Navigate to the confirmation page after the animation
+          navigate("/confirmation", {
+            state: {
+              movie,
+              show,
+              selectedSeats: selectedSeatNumbers,
+              totalAmount,
+            },
+          }); // Navigate to the confirmation page after the animation
         }, 5000);
       } else {
         console.error("Payment failed.");
@@ -224,7 +231,7 @@ const PaymentComponent: React.FC<PaymentComponentProps> = ({ userId }) => {
   return (
     <div>
       {isPaymentProcessing && (
-        <div className="loading-overlay">
+        <div>
           <LoadingAnimation /> {/* Full-screen loading animation */}
         </div>
       )}

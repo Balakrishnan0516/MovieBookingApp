@@ -10,6 +10,17 @@ import Login from "./components/signInLayout/Login";
 import PaymentComponent from "components/PaymentComponent";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TicketConfirmation from "components/TicketConfirmation";
+import Profile from "components/Profile";
+import { AdminPanel } from "components/AdminPanel";
+import { AuthProvider } from "./components/AuthContext";
+import ErrorBoundary from "./ErrorBoundary";
+import HomePage from "components/HomePage";
+import TheatreShowsComponent from "components/TheatreShowsComponent";
+import TheatreMoviesComponent from "components/TheatreMoviesComponent";
+import Footer from "components/Footer";
+import LoadingAnimation from "components/LoadingAnimation";
+import LoadingComponent from "components/LoadingComponent";
 
 function App() {
   const [username, setUsername] = useState<string | null>(null);
@@ -25,22 +36,39 @@ function App() {
     setUserId(null);
   };
 
+  const isAdmin = username === "Balakrish";
+
   return (
     <Router>
-      <NavBar username={username} onLogout={handleLogout} />
-      <Routes>
-        <Route path="/movies" element={<MoviesList />} />
-        <Route path="/movies/:id" element={<MovieDetails />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route
-          path="/movies/:id/payment"
-          element={<PaymentComponent userId={userId} />}
-        />
-      </Routes>
+      <NavBar username={username} onLogout={handleLogout} isAdmin={isAdmin} />
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/loading"
+            element={<LoadingComponent loading={true} />}
+          />
+          <Route path="/profile" element={<Profile userId={userId} />} />
+          <Route path="/movies" element={<MoviesList />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/movies/:id/payment"
+            element={<PaymentComponent userId={userId} />}
+          />
+          <Route path="/confirmation" element={<TicketConfirmation />} />
+
+          <Route path="/theatres" element={<TheatreShowsComponent />} />
+
+          <Route path="/admin" element={<AdminPanel />} />
+        </Routes>
+      </ErrorBoundary>
 
       {/* Add ToastContainer here */}
       <ToastContainer />
+
+      <Footer />
     </Router>
   );
 }

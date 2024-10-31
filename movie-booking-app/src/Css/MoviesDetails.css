@@ -570,3 +570,23 @@ body {
   width: 400px;
   max-width: 100%;
 }
+
+.movie-detail-con.container {
+  background: linear-gradient(
+    to bottom,
+    #181818,
+    #333333 25%,
+    #444444 90%,
+    #111111 105%,
+    #000000
+  );
+  z-index: -3;
+}
+
+@media only screen and (max-width: 768px) {
+  .movie-detail-con.container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
